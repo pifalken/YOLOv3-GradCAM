@@ -153,7 +153,7 @@ class GradCam():
 
         # multiply each weight with its conv output and then, sum
         for i, w in enumerate(weights):
-            cam += target[i, :, :]
+            cam += w * target[i, :, :]
 
         cam = np.maximum(cam, 0)
         cam = (cam - np.min(cam)) / (np.max(cam) - np.min(cam))  # normalize between 0-1
